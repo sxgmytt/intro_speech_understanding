@@ -10,5 +10,4 @@ g = 5 == 9
 h = str(-23.0)
 i = float(False)
 j = bool("Python")
-valid_variable_names = ["global", "_squ"]
-k = "".join(valid_variable_names)
+k = "print2"+"_squ"
