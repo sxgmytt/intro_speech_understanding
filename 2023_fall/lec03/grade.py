@@ -9,7 +9,7 @@ class Test(unittest.TestCase):
         self.assertIs(type(a), type([]), "cancellation([]) should return a %s but it returns a %s"%(type([]),type(a)))
 
     def test_cancellation_output(self):
-        a = homework3.cancellation([True, False, "a", "b", "c", 1, 2, 3], "b")
+        a = homework3.cancellation([True, False, "a", "b", "c", 1, 2, 3], "a")
         self.assertEqual(len(a), 3, "cancellation returned a list of the wrong length")
         self.assertEqual(a[0], True, "cancellation returned a list with the wrong values")
         self.assertEqual(a[1], False, "cancellation returned a list with the wrong values")
