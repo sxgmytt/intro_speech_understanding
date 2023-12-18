@@ -9,4 +9,6 @@ def dft_matrix(N):
     
     return W
 
-
+N = 4
+DFT_matrix = dft_matrix(N)
+print(DFT_matrix)
