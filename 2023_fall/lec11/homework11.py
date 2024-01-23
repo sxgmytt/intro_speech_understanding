@@ -1,16 +1,28 @@
-import speech_recognition
+pip install SpeechRecognition
 
-def transcribe_wavefile(filename, language='en'):
-    '''
-    Use sr.Recognizer.AudioFile(filename) as the source,
-    recognize from that source,
-    and return the recognized text.
+import speech_recognition as sr
+
+def transcribe_flac(filename, language='en'):
+
+    recognizer = sr.Recognizer()
+
+    with sr.AudioFile(filename) as source:
+        audio_data = recognizer.record(source)
+        
+        try:
+            text = recognizer.recognize_google(audio_data, language=language)
+            return text
+        except sr.UnknownValueError:
+            print("Speech Recognition could not understand audio")
+        except sr.RequestError as e:
+            print(f"Could not request results from Google Speech Recognition service; {e}")
     
-    @params:
-    filename (str) - the filename from which to read the audio
-    language (str) - the language of the audio (optional; default is English)
-    
-    @returns:
-    text (str) - the recognized speech
-    '''
-    raise RuntimeError("FAIL!!  You need to change this function so it works!")
+    return None
+
+filename = '264752__copyc4t__phone-messages-english-and-italian.flac'
+recognized_text = transcribe_flac(filename, language='en')
+
+if recognized_text:
+    print(f"Recognized Text: {recognized_text}")
+else:
+    print("Failed to transcribe audio.")
